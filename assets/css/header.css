@@ -6,7 +6,7 @@
     -webkit-transform: scale(0.5);
     top: -26px !important; } }
 .nav {
-  z-index: 1;
+  z-index: 5;
   padding-top: 20px;
   position: absolute;
   left: 0;
@@ -46,7 +46,7 @@
         will-change: transform;
         visibility: hidden;
         position: absolute;
-        z-index: 1;
+        z-index: 5;
         top: 100%; }
         .nav .container .nav__bg-wrapper .nav__bg:before {
           content: "";
@@ -81,7 +81,7 @@
     .nav .container .navbar-toggle {
       display: none; }
     .nav .container .brand {
-      z-index: 3;
+      z-index: 8;
       position: absolute;
       top: 0;
       left: 0; }
@@ -229,7 +229,7 @@
     position: fixed;
     background: #0082c9;
     padding-top: 25px;
-    z-index: 2;
+    z-index: 7;
     top: 0;
     right: 0;
     width: 0;
@@ -250,7 +250,7 @@
     width: 50px;
     height: 50px;
     margin-top: 0;
-    z-index: 3;
+    z-index: 8;
     display: block;
     margin-right: 0; }
     .nav .container .navbar-toggle:hover {
@@ -266,7 +266,7 @@
     position: fixed;
     top: 90px;
     margin-left: 60px;
-    z-index: 2;
+    z-index: 7;
     padding: 0; }
     .nav .container .nav__sections-wrapper .nav__sections {
       display: none;
