@@ -5,15 +5,54 @@
   .brand {
     -webkit-transform: scale(0.5);
     top: -26px !important; } }
+.mobile-bg-container {
+  position: fixed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  opacity: 0; }
+  @media (min-width: 991px) {
+    .mobile-bg-container {
+      display: none; } }
+  .mobile-bg-container.visible {
+    display: block; }
+    @media (min-width: 991px) {
+      .mobile-bg-container.visible {
+        display: none; } }
+  .mobile-bg-container.is-animatable {
+    opacity: 1;
+    width: 100%;
+    min-height: 100%; }
+  .mobile-bg-container .mobile-bg {
+    position: absolute;
+    background: #0082c9;
+    z-index: 2;
+    border-radius: 50%;
+    transition: all 0.3s ease-out; }
+    .mobile-bg-container .mobile-bg:not(.active) {
+      top: 0 !important;
+      right: calc(15px + 5%) !important;
+      width: 49px !important;
+      height: 49px !important; }
+
 .nav {
-  z-index: 5;
+  z-index: 10;
   padding-top: 20px;
   position: absolute;
   left: 0;
   right: 0;
-  opacity: 0;
   background: #0082c9;
-  position: relative; }
+  position: relative;
+  opacity: 0; }
+  .nav.headroom {
+    transition: transform 500ms ease; }
+  .nav.headroom--not-top {
+    position: fixed !important; }
+  .nav.headroom--pinned {
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1; }
+  .nav.headroom--unpinned {
+    transform: translate3d(0px, -100px, 0px);
+    opacity: 0; }
   .nav .container {
     position: relative;
     /* Fix ul and li settings in common */ }
@@ -77,7 +116,8 @@
         .nav .container .nav__bg-wrapper .nav__bg.is-animatable {
           -webkit-transition: 0.3s;
           transition: 0.3s;
-          visibility: visible; }
+          visibility: visible;
+          display: block; }
     .nav .container .navbar-toggle {
       display: none; }
     .nav .container .brand {
@@ -157,7 +197,7 @@
             margin-left: 10px; }
             .nav .container .nav__sections .nav__section .nav__links .nav__item a {
               font-size: 16px;
-              color: #555555; }
+              color: #555; }
               .nav .container .nav__sections .nav__section .nav__links .nav__item a:hover {
                 opacity: 0.6;
                 text-decoration: none; }
@@ -263,10 +303,9 @@
   .nav .container .nav__sections-wrapper {
     margin: 0 auto;
     display: inline-block;
-    position: fixed;
+    position: absolute;
     top: 90px;
-    margin-left: 60px;
-    z-index: 7;
+    z-index: 2;
     padding: 0; }
     .nav .container .nav__sections-wrapper .nav__sections {
       display: none;
@@ -276,8 +315,6 @@
       visibility: hidden; }
       .nav .container .nav__sections-wrapper .nav__sections .nav__section {
         display: block;
-        height: calc(100% / 7);
-        min-height: 50px;
         opacity: 1;
         margin: 0;
         opacity: 0;
@@ -299,11 +336,10 @@
           animation-delay: .35s;
           visibility: visible; }
           .nav .container .nav__sections-wrapper .nav__sections.active .nav__section .nav__label {
-            font-size: 35px;
-            line-height: 45px;
+            font-size: 20px;
+            line-height: 20px;
             padding-left: 0;
-            letter-spacing: -2px;
-            font-weight: 600; }
+            font-weight: 400; }
           .nav .container .nav__sections-wrapper .nav__sections.active .nav__section:nth-of-type(2) {
             animation-delay: .4s; }
           .nav .container .nav__sections-wrapper .nav__sections.active .nav__section:nth-of-type(3) {
@@ -327,12 +363,11 @@
             .nav .container .nav__sections-wrapper .nav__sections.active .nav__section .nav__links .nav__item {
               margin-left: 0; }
               .nav .container .nav__sections-wrapper .nav__sections.active .nav__section .nav__links .nav__item a {
-                font-size: 26px;
-                line-height: 39px;
+                font-size: 18px;
+                line-height: 18px;
                 color: white;
                 margin-left: 0;
-                font-weight: 100;
-                letter-spacing: -2px; }
+                font-weight: 300; }
     .nav .container .nav__sections-wrapper .right-buttons {
       position: relative;
       padding: 0;
@@ -347,15 +382,13 @@
         .nav .container .nav__sections-wrapper .right-buttons.active .ghost-btn a {
           pointer-events: all; }
       .nav .container .nav__sections-wrapper .right-buttons .ghost-btn {
-        font-size: 35px;
-        line-height: 45px;
+        font-size: 20px;
+        line-height: 20px;
         padding-left: 0;
-        letter-spacing: -2px;
-        font-weight: 600;
+        font-weight: 400;
         display: block;
         text-align: left;
         padding-left: 0;
-        height: calc(100% / 7);
         animation: fadeInRight .5s ease forwards;
         pointer-events: none; } }
 @keyframes fadeInRight {
@@ -365,15 +398,6 @@
   100% {
     opacity: 1;
     left: 0; } }
-@media (max-height: 800px) {
-  .nav-down {
-    opacity: 1;
-    transition: all 0.2s ease-in-out; }
-
-  .nav-up {
-    top: -100px !important;
-    opacity: 0;
-    transition: all 0.2s ease-in-out; } }
 /**
 * Scrolled navbar style
 */
@@ -383,6 +407,8 @@
   @media (max-width: 992px) {
     .nav {
       padding-bottom: 20px; } }
+  .nav.no-shadow {
+    box-shadow: none !important; }
   .nav.scrolled {
     position: fixed;
     background: white;
@@ -407,9 +433,9 @@
       .nav.scrolled .logo:not(.menu-open).stopedAnimation {
         background-position-x: -4620px; }
     .nav.scrolled .nav__sections-wrapper .nav__sections .nav__section .nav__label, .nav.scrolled .nav__sections-wrapper .nav__sections .ghost-btn .nav__label, .nav.scrolled .nav__sections-wrapper .nav__sections .ghost-btn .nav__label, .nav.scrolled .nav__sections-wrapper .right-buttons:not(.active) .nav__section .nav__label, .nav.scrolled .nav__sections-wrapper .right-buttons:not(.active) .ghost-btn .nav__label, .nav.scrolled .nav__sections-wrapper .right-buttons:not(.active) .ghost-btn .nav__label {
-      color: #555555; }
+      color: #555; }
       .nav.scrolled .nav__sections-wrapper .nav__sections .nav__section .nav__label:before, .nav.scrolled .nav__sections-wrapper .nav__sections .ghost-btn .nav__label:before, .nav.scrolled .nav__sections-wrapper .nav__sections .ghost-btn .nav__label:before, .nav.scrolled .nav__sections-wrapper .right-buttons:not(.active) .nav__section .nav__label:before, .nav.scrolled .nav__sections-wrapper .right-buttons:not(.active) .ghost-btn .nav__label:before, .nav.scrolled .nav__sections-wrapper .right-buttons:not(.active) .ghost-btn .nav__label:before {
-        background-color: #555555; }
+        background-color: #555; }
   .nav.mobile .nav__sections-wrapper .nav__sections .nav__section .nav__label, .nav.mobile .nav__sections-wrapper .ghost-btn .nav__section .nav__label {
     color: white; }
 

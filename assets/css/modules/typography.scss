@@ -1,0 +1,134 @@
+@import "../variables.scss";
+@import "../helpers.scss";
+@import '../vendor/modular-scale/modular-scale.scss';
+
+.jumbotron {
+    @include modifier(heading-1) {
+        padding-top: 0;
+        color: white !important;
+        font-size: ms(3) !important;
+        line-height: 120%;
+        font-weight: 500;
+
+        @media (max-width: $break-small) {
+            font-size: ms(0, 34px) !important;
+            line-height: 1 !important;
+            margin-top: 0;
+        }
+    }
+
+    @include modifier(lead) {
+      font-size: ms(0);
+      color: white;
+      line-height: 1.6;
+      font-weight: 500;
+
+      @media (max-width $break-small) {
+        font-size: ms(0, 16px)
+      }
+    }
+}
+
+.section {
+    @include modifier(text--center) {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    @include modifier(heading-1) {
+        font-size: ms(3);
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 0;
+        color: $dark-grey;
+
+        @media (max-width: $break-small) {
+            font-size: ms(2);
+            line-height: 1;
+            margin-top: 0;
+        }
+    }
+
+    @include modifier(heading-2) {
+        font-size: ms(2);
+        font-weight: 300;
+        color: $dark-grey;
+
+        @media (max-width: $break-small) {
+            font-size: ms(2);
+            line-height: 1.2;
+            margin-top: 0;
+        }
+    }
+
+    @include modifier(intro) {
+        font-size: ms(0, 22px);
+        font-weight: 300;
+    }
+
+    @include modifier(paragraph__tittle) {
+        font-size: ms(0, 22px);
+        line-height: 30px;
+        font-weight: 600;
+        color: $dark-blue;
+    }
+
+    @include modifier(paragraph) {
+        font-size: ms(0);
+        font-weight: 400;
+        line-height: 1.5;
+        color: $medium-grey;
+    }
+}
+
+.hyperlink {
+    color: #a2a2a2;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: solid 1px;
+    transition: all 0.5s ease;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: none;
+        color: $dark-blue;
+    }
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 60px;
+    line-height: 120%;
+    color: #555;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 60px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #555;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.36;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+h5 {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #555;
+}
